@@ -1,7 +1,13 @@
 <?php
 
 return [
-    
+    'default_roles' => [
+        'super_admin_role_name' => 'Davin',
+        'filament_user' => [
+            'role_name' => 'filament_user',
+            'enabled' => true
+        ],
+    ],
     'shield_resource' => [
         'slug' => 'shield/roles',
         'navigation_sort' => -1,
