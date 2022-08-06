@@ -9,6 +9,7 @@
         "bezhansalleh/filament-shield": "^2.1",
         "doctrine/dbal": "^3.3",
         "filament/filament": "^2.15",
+        "filament/notifications": "^2.15",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
