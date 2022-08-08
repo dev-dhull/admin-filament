@@ -19,7 +19,9 @@ class StateResource extends Resource
 {
     protected static ?string $model = State::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-office-building';
+    protected static ?string $navigationGroup = 'Employee Management';
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
@@ -45,7 +47,7 @@ class StateResource extends Resource
                 Tables\Columns\TextColumn::make('country.name')->sortable()->searchable(),
             ])
             ->filters([
-                //
+                
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -58,7 +60,8 @@ class StateResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\EmployeesRelationManager::class,
+            RelationManagers\CitiesRelationManager::class,
         ];
     }
     

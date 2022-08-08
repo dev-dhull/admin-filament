@@ -18,7 +18,9 @@ class CountryResource extends Resource
 {
     protected static ?string $model = Country::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationIcon = 'heroicon-o-flag';
+    protected static ?string $navigationGroup = 'Employee Management';
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
@@ -58,7 +60,8 @@ class CountryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\EmployeesRelationManager::class,
+            RelationManagers\StatesRelationManager::class,
         ];
     }
     
