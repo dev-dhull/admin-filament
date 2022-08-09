@@ -3,12 +3,15 @@
 namespace App\Filament\Resources\StateResource\RelationManagers;
 
 use Filament\Forms;
+use App\Models\City;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
 
 class CitiesRelationManager extends RelationManager
 {
@@ -20,9 +23,11 @@ class CitiesRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('state_id')
+                ->relationship('state', 'name'),
                 Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
+               ->required()
+               ->maxLength(255),
             ]);
     }
 
@@ -30,7 +35,9 @@ class CitiesRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('id')->sortable(),
+                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('state.name')->sortable()->searchable(),
             ])
             ->filters([
                 //
