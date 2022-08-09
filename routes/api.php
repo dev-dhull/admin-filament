@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/employees', function(){
-    $employees = Employee::orderBy('last_name')->get();
+    $employees = Employee::orderBy('first_name', 'DESC')->get();
 
     return EmployeeResource::collection($employees);
 });
